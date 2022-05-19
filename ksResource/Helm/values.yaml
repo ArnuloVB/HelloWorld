@@ -2,5 +2,5 @@
 title: "Service Example Hello"
 
 # Service controlls
-serviceName: pica-app-hello
+serviceName: app-hello
 serviceType: LoadBalancer
