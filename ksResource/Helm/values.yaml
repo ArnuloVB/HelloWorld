@@ -3,4 +3,4 @@ title: "Service Example Hello"
 
 # Service controlls
 serviceName: pica-app-hello
-serviceType: ClusterIP
+serviceType: LoadBalancer
