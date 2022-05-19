@@ -1,5 +1,5 @@
 HELP.md
-target/
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -7,6 +7,8 @@ target/
 ### STS ###
 .apt_generated
 .classpath
+*.class
+*.lst
 .factorypath
 .project
 .settings
@@ -23,6 +25,7 @@ target/
 /nbproject/private/
 /nbbuild/
 /dist/
+**/META-INF/
 /nbdist/
 /.nb-gradle/
 build/
