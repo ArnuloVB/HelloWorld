@@ -37,7 +37,6 @@ metadata:
 spec:
   type: {{ .Values.serviceType }}
   ports:
-    - protocol: HTTP
     - port: 8099
   selector:
     app: {{ .Values.serviceName }}
