@@ -139,13 +139,13 @@ jobs:
       with:
         resource-group: ${{ env.RESOURCE_GROUP }}
         cluster-name: ${{ env.CLUSTER_NAME }}
-
-    - name: List files in the repository
-      run: 
-        cd "/home/runner/work/kallsonyfront/"
-    - name: List files in the repository
-      run: |
-        ls -lac "/home/runner/work/kallsonyfront/kallsonyfront"
+    
+    #- name: List files in the repository
+    #  run: 
+    #    cd "/home/runner/work/kallsonyfront/"
+    #- name: List files in the repository
+    #  run: |
+    #    ls -lac "/home/runner/work/kallsonyfront/kallsonyfront"
     # Runs Helm to create manifest files
     - name: Bake deployment
       uses: azure/k8s-bake@v2.1
