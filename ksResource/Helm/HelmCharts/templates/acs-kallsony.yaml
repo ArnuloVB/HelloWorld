@@ -30,13 +30,15 @@ spec:
             - name: TITLE
               value: {{ .Values.title }}
 ---
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: {{ .Values.serviceName }}
+  name: my-service
 spec:
-  type: {{ .Values.serviceType }}
-  ports:
-    - port: 8090
   selector:
     app: {{ .Values.serviceName }}
+  ports:
+  - protocol: TCP
+    port: 8070
+    targetPort: 9376
+  type: LoadBalancer
