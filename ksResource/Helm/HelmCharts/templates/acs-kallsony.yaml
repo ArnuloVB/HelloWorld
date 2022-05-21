@@ -33,7 +33,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: my-service
+  name: {{ .Values.serviceName }}
 spec:
   selector:
     app: {{ .Values.serviceName }}
