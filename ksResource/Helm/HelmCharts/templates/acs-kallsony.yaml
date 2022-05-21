@@ -25,7 +25,7 @@ spec:
               cpu: 250m
               memory: 256Mi
           ports:
-            - containerPort: 9898
+            - containerPort: 8090
           env:
             - name: TITLE
               value: {{ .Values.title }}
@@ -37,6 +37,6 @@ metadata:
 spec:
   type: {{ .Values.serviceType }}
   ports:
-    - port: 9898
+    - port: 8090
   selector:
     app: {{ .Values.serviceName }}
