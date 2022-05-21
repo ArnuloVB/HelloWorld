@@ -2,5 +2,5 @@
 title: "Service Example Hello"
 
 # Service controlls
-serviceName: app-hello
+serviceName: app-demo-hello
 serviceType: LoadBalancer
