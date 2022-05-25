@@ -16,7 +16,7 @@
 #
 # 2. Set the following environment variables (or replace the values below):
 #    - AZURE_CONTAINER_REGISTRY (name of your container registry / ACR)
-#    - CONTAINER_NAME (name of the container image you would like to push up to your ACR)
+#    - IMG_NAME (name of the container image you would like to push up to your ACR)
 #    - RESOURCE_GROUP (where your cluster is deployed)
 #    - CLUSTER_NAME (name of your AKS cluster)
 #    - IMAGE_PULL_SECRET_NAME (name of the ImagePullSecret that will be created to pull your ACR image)
@@ -40,10 +40,9 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "aespicaacrqa"
-  CONTAINER_NAME: "app-hello"
+  IMG_NAME: "app-hello"
   RESOURCE_GROUP: "AES-PICA-RG-QA"
   CLUSTER_NAME: "AES-PICA-AKSQA"
-  IMAGE_PULL_SECRET_NAME: "app-hello-img"
   CHART_PATH: "./ksResource/Helm/HelmCharts"
   CHART_OVERRIDE_PATH: "./ksResource/Helm/values.yaml"
   
@@ -68,7 +67,7 @@ jobs:
     # Builds and pushes an image up to your Azure Container Registry
     - name: Build and push image to ACR
       run: |
-        az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:latest --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+        az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMG_NAME }}:latest --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
       
   createSecret:
     permissions:
@@ -110,7 +109,7 @@ jobs:
         container-registry-url: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io
         container-registry-username: ${{ steps.get-acr-creds.outputs.username }}
         container-registry-password: ${{ steps.get-acr-creds.outputs.password }}
-        secret-name: ${{ env.IMAGE_PULL_SECRET_NAME }} 
+        secret-name: ${{ env.IMG_NAME }} 
     
   deploy:
     permissions:
@@ -165,6 +164,6 @@ jobs:
         action: deploy
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:latest
+          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMG_NAME }}:latest
         imagepullsecrets: |
-          ${{ env.IMAGE_PULL_SECRET_NAME }}
+          ${{ env.IMG_NAME }}
