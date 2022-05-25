@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.serviceName }}
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.serviceName }}
@@ -11,8 +11,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.serviceName }}
-    spec: 
-      progressDeadlineSeconds: 1800
+    spec:
       containers:
         - name: {{ .Values.serviceName }}
           image: aespicaacrqa.azurecr.io/app-hello:latest
