@@ -11,9 +11,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.serviceName }}
-    spec:
-      nodeSelector:
-        "kubernetes.io/os": linux
+    spec:      
       containers:
         - name: {{ .Values.serviceName }}
           image: aespicaacrqa.azurecr.io/app-hello:latest
