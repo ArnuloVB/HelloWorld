@@ -3,4 +3,4 @@ title: "Service Example Hello"
 
 # Service controlls
 serviceName: app-demo
-serviceType: ClusterIP
+serviceType: LoadBalancer
