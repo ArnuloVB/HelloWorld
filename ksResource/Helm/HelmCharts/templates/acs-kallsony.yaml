@@ -11,7 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Values.serviceName }}
-    spec:      
+    spec: 
+      progressDeadlineSeconds: 1800
       containers:
         - name: {{ .Values.serviceName }}
           image: aespicaacrqa.azurecr.io/app-hello:latest
