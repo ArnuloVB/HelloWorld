@@ -109,7 +109,6 @@ jobs:
         container-registry-url: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io
         container-registry-username: ${{ steps.get-acr-creds.outputs.username }}
         container-registry-password: ${{ steps.get-acr-creds.outputs.password }}
-        namespace: default
         secret-name: ${{ env.IMG_NAME }} 
     
   deploy:
@@ -163,7 +162,6 @@ jobs:
       uses: Azure/k8s-deploy@v3.1
       with:
         action: deploy
-        namespace: default
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
           ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.IMG_NAME }}:latest
