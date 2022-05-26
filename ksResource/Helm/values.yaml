@@ -2,5 +2,5 @@
 title: "Service Example Hello"
 
 # Service controlls
-serviceName: jave-app
+serviceName: app-team
 serviceType: NodePort
