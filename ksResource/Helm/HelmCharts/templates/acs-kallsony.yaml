@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.serviceName }}
-          image: aespicaacrprod.azurecr.io/jave-app:latest
+          image: aespicaacrprod.azurecr.io/app-team:latest
           imagePullPolicy: IfNotPresent
           resources:
             requests:
