@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
         - name: {{ .Values.serviceName }}
-          image: aespicaacrqa.azurecr.io/app-hello:latest
+          image: app-hello:latest
+          imagePullPolicy: IfNotPresent
           resources:
             requests:
               cpu: 100m
               memory: 128Mi
             limits:
               cpu: 250m
-              memory: 256Mi
-          imagePullPolicy: IfNotPresent          
+              memory: 256Mi          
           ports:
             - containerPort: 8099
 ---
@@ -33,6 +33,8 @@ metadata:
 spec:
   type: {{ .Values.serviceType }}
   ports:
-    - port: 8099
+    - protocol: "TCP"
+      port: 8099
+      targetPort: 8099
   selector:
     app: {{ .Values.serviceName }}

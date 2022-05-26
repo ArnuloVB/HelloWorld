@@ -1,7 +1,4 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ENV IMG_PATH=/img
+FROM openjdk:8
 EXPOSE 8090
-RUN mkdir -p /img
-ADD ./target/HelloWorld-0.0.1-SNAPSHOT.jar app-demo.jar
-ENTRYPOINT ["java", "-jar","/hello.jar"]
+ADD /target/HelloWorld-0.0.1-SNAPSHOT.jar app-demo.jar
+ENTRYPOINT ["java", "-jar","/app-demo.jar"]
