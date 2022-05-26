@@ -40,7 +40,7 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "aespicaacrprod"
-  IMG_NAME: "app-hello"
+  IMG_NAME: "app-jave"
   RESOURCE_GROUP: "AES-PICA-RG-PROD"
   CLUSTER_NAME: "AES-PICA-AKSPROD"
   CHART_PATH: "./ksResource/Helm/HelmCharts"
