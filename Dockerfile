@@ -1,4 +1,5 @@
-FROM openjdk:8
+FROM openjdk:8-jdk-slim
 EXPOSE 8090
-ADD /target/HelloWorld-0.0.1-SNAPSHOT.jar jave-app.jar
+COPY "./target/HelloWorld-0.0.1-SNAPSHOT.jar" "jave-app.jar"
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar","/jave-app.jar"]
